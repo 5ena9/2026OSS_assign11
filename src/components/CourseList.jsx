@@ -85,10 +85,7 @@ export default function CourseList() {
       <section className="panel">
         <div className="panel-header">
           <span className="small-note">{courses.length} courses</span>
-        </div>
-
-          실습 과제: 아래 Add 버튼과 완료 체크박스의 기능을 직접 구현하세요.
-        
+        </div>        
         <form className="add-form" onSubmit={handleAdd}>
           <input
             className="input"
