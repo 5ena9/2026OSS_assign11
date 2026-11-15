@@ -8,7 +8,7 @@
     "Segoe UI",
     sans-serif;
   color: #202c3c;
-  background: #f5f7fb;
+  background: #eef2f7;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -53,8 +53,8 @@ body {
 .tag {
   border-radius: 999px;
   padding: 8px 12px;
-  color: #4568b4;
-  background: #e6edfe;
+  color: #6c90f5;
+  background: #dbeafe;
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
@@ -314,6 +314,9 @@ body {
   .course-row {
     grid-template-columns: 1fr auto;
     gap: 7px;
+  }
+  .course-row:hover {
+    background: #f5faff;
   }
   .category-cell {
     grid-column: 1;
