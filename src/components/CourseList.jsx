@@ -63,7 +63,7 @@ export default function CourseList() {
     if (filterStatus === 'ACTIVE') return matchesSearch && !course.completed;
     return matchesSearch;
   });
-  
+
   const doneCount = courses.filter((course) => course.completed).length;
 
   return (
@@ -87,21 +87,58 @@ export default function CourseList() {
           <h2>My Courses</h2>
           <span className="small-note">{courses.length} courses</span>
         </div>
-        <p className="todo">
+
           실습 과제: 아래 Add 버튼과 완료 체크박스의 기능을 직접 구현하세요.
-        </p>
+        
         <form className="add-form" onSubmit={handleAdd}>
           <input
             className="input"
             value={newName}
-            onChange={(event) => setNewName(event.target.value)}
+            onChange={(event) => {
+              setNewName(event.target.value);
+              if (error) setError(""); // [추가] 다시 입력할 때 에러 문구 지우기
+            }}
             placeholder="새 과목명을 입력하세요"
             aria-label="새 과목명"
           />
+
+          {/* [추가] 카테고리 선택 드롭다운.*/}
+          <select
+            className="input select"
+            value={newCategory}
+            onChange={(event) => setNewCategory(event.target.value)}
+            aria-label="이수 구분 선택"
+          >
+            <option value="Major">Major</option>
+            <option value="Elective">Elective</option>
+          </select>
+
           <button className="btn primary" type="submit">
             + Add Course
           </button>
         </form>
+        {error && <p className="error">{error}</p>}
+
+        <div className="tools">
+          <input
+            className="input"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="과목명으로 검색..."
+            aria-label="과목명 검색"
+          />
+          <select
+            className="input select"
+            value={filterStatus}
+            onChange={(event) => setFilterStatus(event.target.value)}
+            aria-label="완료 상태 필터"
+          >
+            <option value="ALL">전체 보기</option>
+            <option value="ACTIVE">진행 중</option>
+            <option value="DONE">완료됨</option>
+          </select>
+        </div>
+        
         <div className="list-head">
           <span>COURSE</span>
           <span>CATEGORY</span>
