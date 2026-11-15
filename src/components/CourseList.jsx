@@ -84,7 +84,6 @@ export default function CourseList() {
       </section>
       <section className="panel">
         <div className="panel-header">
-          <h2>My Courses</h2>
           <span className="small-note">{courses.length} courses</span>
         </div>
 
@@ -138,16 +137,16 @@ export default function CourseList() {
             <option value="DONE">완료됨</option>
           </select>
         </div>
-        
+
         <div className="list-head">
           <span>COURSE</span>
           <span>CATEGORY</span>
           <span>ACTIONS</span>
         </div>
-        {courses.length === 0 && (
-          <div className="empty">등록된 과목이 없습니다.</div>
+        {filteredCourses.length === 0 && (
+          <div className="empty">표시할 과목이 없습니다.</div>
         )}
-        {courses.map((course) => (
+        {filteredCourses.map((course) => (
           <CourseItem
             key={course.id}
             course={course}
